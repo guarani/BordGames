@@ -11,8 +11,7 @@
     A web and mobile app for playing board games.
 
     Users have a always rotating sub-set of a large collection of board
-    games available on their phone, for free use. A user may decide to
-    purchase a game, making it permanently available on their device.
+    games available on their phone, for free use.
 
 
     --- Introduction ---
@@ -26,14 +25,12 @@
     it is replaced with a different one. This introduces the user to new 
     games and prevents a user from playing a particular game indefinetly
     for free.
-    If a user does enjoy a game, s/he can purchase the game and it will 
-    be permanently installed on the device. This is the only source of
-    revenue for [APP_NAME].
+   
 
 
     --- Architecture --- 
 
-    The games will be available on the web and mobil apps (available
+    The games will be available on the web and mobile apps (available
     on Android, iOS & Windows Phone). [APP_NAME] will provide a 
     seamless experience for users, regardless of the platform used.
     The multiplayer aspect is also very important, so the web app will
