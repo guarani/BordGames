@@ -18,29 +18,35 @@ class PVSBoardView: UIView {
     var touchDown: Bool = false
 
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) -> () {
         self.touchDown = true
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.touchDown = false
 
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        var localPosition = touches.anyObject()?.locationInView(self)
-        println("board position: \(localPosition)")
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+    
         
-        if (self.touchDown == true) {
-            for square in self.subviews {
-                var squareView = square as PVSBoardSquare
-                var positionInSquare = self.convertPoint(localPosition!, toView: squareView)
-                println("square position: \(positionInSquare)")
-                if squareView.pointInside(self.convertPoint(localPosition!, toView: squareView), withEvent: event) {
-                    self.delegate?.squareTouchedAt(squareView.column, row: squareView.row)
+        if let touch = touches.first as? UITouch {
+            var localPosition = touch.locationInView(self)
+            println("board position: \(localPosition)")
+            
+            if (self.touchDown == true) {
+                for square in self.subviews {
+                    var squareView = square as? PVSBoardSquare
+                    var positionInSquare = self.convertPoint(localPosition, toView: squareView)
+                    println("square position: \(positionInSquare)")
+                    if squareView!.pointInside(self.convertPoint(localPosition, toView: squareView), withEvent: event) {
+                        self.delegate?.squareTouchedAt(squareView!.column, row: squareView!.row)
+                    }
                 }
             }
         }
+        
+       
 //        println("Touches moved: \(localPosition)")
         
     }
